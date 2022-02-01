@@ -5,3 +5,4 @@ UserRegister.ValidateFName("Abcdef");
 UserRegister.ValidateLName("Xyzabc");
 UserRegister.ValidateEmail("abc_456xyz@BridgeLabz.co.in");
 UserRegister.ValidateMobile("91 9876543210");
+UserRegister.ValidatePasswordR1("abcEGh123");
