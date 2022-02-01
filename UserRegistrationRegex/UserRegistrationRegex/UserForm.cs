@@ -13,7 +13,8 @@ namespace UserRegistrationRegex
         public const string LAST_NAME = "^[A-Z][a-zA-Z]{2}";
         public const string EMAIL = "^[0-9a-zA-Z]+[.+-_]{0,1}[0-9a-zA-Z]+[@][a-zA-Z]+[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3}){0,1}";
         public const string MOBILE = "^([9][1])+[ ]+[789]{1}[0-9]{9}$";
-        public const string PASSWORD_R1 = "^[a-zA-Z0-9]{8}";
+        public const string PASSWORD_R1 = "^[a-z]{8}";
+        public const string PASSWORD_R2 = "^(?=.*[a-z])(?=.*[A-Z]).{8,}$";
         public  void ValidateFName(string fName) 
         {
             // create regex object & initialize pattern to it
@@ -91,6 +92,13 @@ namespace UserRegistrationRegex
             {
                 Console.WriteLine("Password does not match with pattern");
             }
+        }
+
+        // atleast one uppercase
+        public bool ValidatePasswordR2(string password)
+        {
+            Regex regex = new Regex(PASSWORD_R2);
+            return regex.IsMatch("akXyb302");
         }
     }
 }
