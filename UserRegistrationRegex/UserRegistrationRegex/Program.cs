@@ -9,3 +9,4 @@ UserRegister.ValidatePasswordR1("abcdefgh");
 Console.WriteLine("rule 2 is : "+UserRegister.ValidatePasswordR2());
 Console.WriteLine("rule 3 is : "+UserRegister.ValidatePasswordR3());
 Console.WriteLine("rule 4 is : " +UserRegister.ValidatePasswordR4());
+UserRegister.ValidatingEmail();

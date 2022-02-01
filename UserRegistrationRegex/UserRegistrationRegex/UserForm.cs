@@ -17,8 +17,9 @@ namespace UserRegistrationRegex
         public const string PASSWORD_R2 = "^(?=.*[a-z])(?=.*[A-Z]).{8,}$";
         public const string PASSWORD_R3 = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$";
         public const string PASSWORD_R4 = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()]).{8,}$";
+        public const string SAMPLE_EMAIL = "^[a-zA-z]{3}([+-_ .]*[a-zA-Z0-9]+)*[@][a-zA-z0-9]+(.[a-z]{2,3})*$";
 
-        public void ValidateFName(string fName) 
+        public void ValidateFName(string fName)
         {
             // create regex object & initialize pattern to it
             Regex regex = new Regex(FIRST_NAME);
@@ -32,7 +33,7 @@ namespace UserRegistrationRegex
             {
                 Console.WriteLine("first name does not match with pattern");
             }
-           
+
         }
         public void ValidateLName(string lName)
         {
@@ -114,6 +115,29 @@ namespace UserRegistrationRegex
         {
             Regex regex = new Regex(PASSWORD_R4);
             return regex.IsMatch("akXs@bx3");
+        }
+
+        // check array of strings if they match the pattern sample email
+        public void ValidatingEmail()
+        {
+            string[] sample = { "abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc-100@abc.net", "abc.100@abc.com.au",
+                                 "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com" ,"abc","abc@.com","abc123@gmail.a", "abc123@.com" ,
+                                 "abc123@.com.com",".abc@abc.com","abc()*@gmail.com","abc@%*.com","abc.@gmail.com","abc@abc@gmail.com","abc@gmail.com.1a"};
+            Regex regex = new Regex(SAMPLE_EMAIL);
+            Console.WriteLine("Validates Email ID");
+            Validate(sample, regex);
+        }
+        // printing email id status
+        public void Validate(string[] arr, Regex regex)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                bool rs = regex.IsMatch(arr[i]);
+                if (rs == true)
+                    Console.WriteLine(arr[i] + "-->" + "Valid Email ID");
+                else
+                    Console.WriteLine(arr[i] + "-->" + "Invalid Email ID");
+            }
         }
     }
 }
