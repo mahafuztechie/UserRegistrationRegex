@@ -15,7 +15,9 @@ namespace UserRegistrationRegex
         public const string MOBILE = "^([9][1])+[ ]+[789]{1}[0-9]{9}$";
         public const string PASSWORD_R1 = "^[a-z]{8}";
         public const string PASSWORD_R2 = "^(?=.*[a-z])(?=.*[A-Z]).{8,}$";
-        public  void ValidateFName(string fName) 
+        public const string PASSWORD_R3 = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$";
+
+        public void ValidateFName(string fName) 
         {
             // create regex object & initialize pattern to it
             Regex regex = new Regex(FIRST_NAME);
@@ -95,10 +97,16 @@ namespace UserRegistrationRegex
         }
 
         // atleast one uppercase
-        public bool ValidatePasswordR2(string password)
+        public bool ValidatePasswordR2()
         {
             Regex regex = new Regex(PASSWORD_R2);
             return regex.IsMatch("akXyb302");
+        }
+        //atleast one number
+        public bool ValidatePasswordR3()
+        {
+            Regex regex = new Regex(PASSWORD_R3);
+            return regex.IsMatch("akXybxy3");
         }
     }
 }
